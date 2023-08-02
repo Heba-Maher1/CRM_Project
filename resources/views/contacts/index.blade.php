@@ -1,8 +1,8 @@
 <x-app-layout>
     <div class="container mt-5">
         <x-alert name='success' id="sucess" class="alert-success"/>
-        <div class="d-flex justify-content-between align-items-center">
-            <h1 class="mb-5 fs-2">All Contacts</h1>
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="fs-2">All Contacts</h1>
             <a href="{{route('contacts.create')}}" class="btn btn-success">Create</a>
         </div>
 
@@ -31,12 +31,12 @@
                     Job:{{ $contact->job }}<br>
 
                   <div class="d-flex justify-content-center">
-                    <a href="{{route('contacts.edit' , $contact->id)}}" class="btn btn-success me-2">Edit</a>
-                    <a href="{{route('contacts.show' , $contact->id)}}" class="btn btn-success me-2">Show</a>
+                    <a href="{{route('contacts.edit' , $contact->id)}}" class="btn btn-outline-primary me-2">Edit</a>
+                    <a href="{{route('contacts.show' , $contact->id)}}" class="btn btn-outline-primary me-2">Show</a>
                     <form action="{{route('contacts.destroy' , $contact->id)}}" method="post">
                       @csrf
                       @method('delete')
-                      <button type="submit" class="btn btn-success text-success me-2">Delete</button>
+                      <button type="submit" class="btn btn-outline-primary me-2">Delete</button>
                     </form>
                   </div> 
                 </div>
