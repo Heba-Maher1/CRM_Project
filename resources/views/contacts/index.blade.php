@@ -5,6 +5,22 @@
             <h1 class="fs-2">All Contacts</h1>
             <a href="{{route('contacts.create')}}" class="btn btn-success">Create</a>
         </div>
+        <div class="col-12 text-center my-4">
+          <form action="{{ URL::current() }}" method="get">
+            <div class="input-group mb-3">
+              <input
+                type="text"
+                class="form-control border-0 shadow-sm p-3"
+                placeholder="search username..."
+                aria-label="search"
+                aria-describedby="button-addon2"
+              />
+              <button class="btn btn-outline-primary" type="button" id="button-addon2" data-mdb-ripple-color="dark">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+            </div>
+        </form>
+        </div>
 
         @foreach ($contacts as $contact)
         <div class="accordion mb-3" id="accordionExample">

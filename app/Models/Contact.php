@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -16,6 +17,17 @@ class Contact extends Model
     protected $fillable = [
          'user_id', 'name', 'date_birth' , 'address' , 'phone' , 'company', 'job'  ,'image'
     ];
+
+    public function scopeFilter(Builder $builder , $filters)
+    {
+        $builder->when($filters['search'] ?? '', function($builder , $value){
+            $builder->where(function($builder) use($value){
+                $builder->where('name' ,'LIKE',"%{$value}%");
+                        // ->orWhere('company' ,'LIKE',"%{$value}%")
+                        // ->orWhere('job' ,'LIKE',"%{$value}%");
+            });
+        });
+    }
 
     public function user(): BelongsTo
     {

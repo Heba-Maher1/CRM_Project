@@ -10,9 +10,12 @@ use Illuminate\Support\Facades\Auth;
 
 class ContactController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $contacts = Contact::all();
+        $contacts = Contact::where('user_id' ,'=',Auth::id())
+        ->filter($request->query())
+        ->orderBy('created_at')
+        ->get();
 
         session('success');
 
