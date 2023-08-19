@@ -1,38 +1,45 @@
+<div class="mb-3 input-icon border-0">
+    <span class="input-addon"><i class="fa-solid fa-user"></i></span>
+    <input type="text" class="form-control input-border-bottom shadow-sm ps-5 py-3" id="name" name="name" value="{{$contact->name}}" placeholder="Name" required style="border: none;">
+</div>        
+<div class="mb-3 input-icon border-0">
+    <span class="input-addon"><i class="fa-solid fa-location-dot"></i></span>
+    <input type="text" class="form-control input-border-bottom shadow-sm ps-5 py-3" id="address" name="address" value="{{$contact->address}}"  placeholder="Address" required style="border: none;">
+</div>               
+<div class="mb-3 input-icon border-0">
+    <span class="input-addon"><i class="fa-solid fa-phone"></i></span>
+    <input type="text" class="form-control input-border-bottom shadow-sm ps-5 py-3" id="phone" name="phone" value="{{$contact->phone}}"  placeholder="Phone" required style="border: none;">
+</div>        
+<div class="mb-3 input-icon border-0">
+    <span class="input-addon"><i class="fa-solid fa-building"></i></span>
+    <input type="text" class="form-control input-border-bottom shadow-sm ps-5 py-3" id="company" name="company" value="{{$contact->company}}"  placeholder="Company" required style="border: none;">
+</div>        
+<div class="mb-3 input-icon border-0">
+    <span class="input-addon"><i class="fa-solid fa-briefcase"></i></span>
+    <input type="text" class="form-control input-border-bottom shadow-sm ps-5 py-3" id="job" name="job" value="{{$contact->job}}" placeholder="Job" style="border: none;">
+</div>
+<div class="mb-3 input-icon border-0">
+    @if($contact->image)
+    <img src="{{Storage::disk('public')->url($contact->image)}}" alt="">
+    @endif
+    <span class="input-addon"><i class="fa-solid fa-image"></i></span>
+    <input type="file" class="form-control input-border-bottom shadow-sm ps-5 py-3" id="image" name="image" placeholder="Image" style="border: none;">
+</div>
+<div class="d-flex justify-content-end">
+    <button type="submit" class="btn text-white bg-color">{{$button_lable}}</button>
+</div>
 
-    <x-form.form-floating name="name" placeholder="Name">
-        <x-form.input name="name" :value="$contact->name" placeholder="Name" />
-    </x-form.form-floating>
+<style>
+    .input-icon {
+    position: relative;
+}
 
-    <x-form.form-floating name="date_birth" placeholder="date_birth">
-        <x-form.input name="date_birth" :value="$contact->date_birth" placeholder="date_birth" />
-    </x-form.form-floating>
-    
-    <x-form.form-floating name="address" placeholder="address">
-        <x-form.input name="address" :value="$contact->address" placeholder="address" />
-    </x-form.form-floating>
-
-
-    <x-form.form-floating name="phone" placeholder="phone">
-        <x-form.input name="phone" :value="$contact->phone" placeholder="phone" />
-    </x-form.form-floating>
-
-    <x-form.form-floating name="company" placeholder="company">
-        <x-form.input name="company" :value="$contact->company" placeholder="company" />
-    </x-form.form-floating>
-
-    <x-form.form-floating name="job" placeholder="job">
-        <x-form.input name="job" :value="$contact->job" placeholder="job" />
-    </x-form.form-floating>
-
-
-    <div class="form-floating mb-3">
-        @if($contact->image)
-        <img src="{{Storage::disk('public')->url($contact->image)}}" alt="">
-        @endif
-        <input type="file"  @class(['form-control' , 'is-invalid' => $errors->has('image')]) name="image" id="image" placeholder="image">
-        <label for="image">image</label> 
-    </div>
-    
-    <button type="submit" class="btn btn-outline-primary">{{$button_lable}}</button>
-
-  
+.input-addon {
+    position: absolute;
+    top: 9px;
+    left: 0;
+    bottom: 0;
+    padding: 8px;
+    pointer-events: none;
+}
+</style>

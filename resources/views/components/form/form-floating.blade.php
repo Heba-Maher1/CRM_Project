@@ -1,5 +1,3 @@
-<div class="form-floating mb-3">
-    {{ $slot}}
-    <label for="{{$name}}">{{$placeholder}}</label>
-    <x-error-message name="{{$name}}" />
+<div class="mb-3 input-icon">
+    {{ $slot }}
 </div>

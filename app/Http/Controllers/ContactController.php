@@ -12,14 +12,17 @@ class ContactController extends Controller
 {
     public function index(Request $request)
     {
+        
         $contacts = Contact::where('user_id' ,'=',Auth::id())
         ->filter($request->query())
         ->orderBy('created_at')
         ->get();
 
+        $count = Contact::where('user_id' ,'=',Auth::id())->count();
+
         session('success');
 
-        return view('contacts.index' , compact('contacts'));
+        return view('contacts.index' , compact('contacts' , 'count'));
 
     }
 

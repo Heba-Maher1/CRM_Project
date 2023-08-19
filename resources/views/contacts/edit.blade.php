@@ -1,6 +1,7 @@
 <x-app-layout>
-    <div class="container mt-4">
-        <h1 class="mb-4">Update Contact</h1>
+    
+    <div class="container mt-5  px-5">
+        <h1 class="fs-2 my-4">Update Contact , {{$contact->id}}</h1>
         <form action="{{ route('contacts.update' , $contact->id)}}" method="post" enctype="multipart/form-data">
             @csrf
             @method('put')
